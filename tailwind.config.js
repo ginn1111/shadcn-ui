@@ -6,16 +6,22 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "xl": "1200px"
       },
     },
     extend: {
+      fontSize: {
+        base: '14px',
+      },
+      spacing: {
+        header: "60px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -69,8 +69,12 @@
 @layer base {
   * {
     @apply border-border;
+    @apply box-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground min-h-screen;
+  }
+  button, div {
+    @apply outline-transparent border-transparent;
   }
 }

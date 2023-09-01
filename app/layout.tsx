@@ -1,9 +1,9 @@
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Nunito({ subsets: ['latin', 'vietnamese'] })
 
 export const metadata: Metadata = {
   title: 'Shadcn UI',

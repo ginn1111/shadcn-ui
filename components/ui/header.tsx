@@ -9,7 +9,7 @@ const Header = () => {
   return <header className='w-full h-header dark:shadow-white/30 dark:shadow-md mx-auto shadow-sm bg-card/10 backdrop-blur-[14px] fixed left-0 right-0'>
     <div className="h-full container flex justify-between items-center">
       <Logo />
-      <NavigationMenu className="h-full" defaultValue="components">
+      <NavigationMenu className="h-full">
         <NavigationMenuList className="flex h-full items-center gap-[1rem]">
           <NavigationMenuItem value="components 1">
             <NavigationMenuTrigger>
@@ -17,8 +17,8 @@ const Header = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <NavigationComponentContent items={[
-                { title: 'Component title 1', link: '/components/title1' },
-                { title: 'Component title 2', link: '/components/title2' }
+                { key: 'c1', title: 'Component title 1', link: '/components/title1' },
+                { key: 'c2', title: 'Component title 2', link: '/components/title2' }
               ]} />
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -27,7 +27,7 @@ const Header = () => {
               <NavigationMenuLink href="/components">Component</NavigationMenuLink>
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <NavigationComponentContent items={[{ title: 'Component title 1', link: '/components/title1' }]} />
+              <NavigationComponentContent items={[{ key: 'c2', title: 'Component title 1', link: '/components/title1' }]} />
             </NavigationMenuContent>
           </NavigationMenuItem>
 
@@ -41,6 +41,7 @@ const Header = () => {
 }
 
 type Item = {
+  key: string;
   title: string;
   link: string;
 }
@@ -51,9 +52,15 @@ type NavigationComponentContentProps = {
 
 const NavigationComponentContent = (props: NavigationComponentContentProps) => {
   const { items } = props
-  return <ul className="grid grid-cols-2 w-[200px] gap-2 min-w-max px-[1rem] py-[0.5rem]">
+  return <ul className="grid grid-cols-2 w-[250px] gap-[1rem] min-w-max px-[1.25rem] py-[0.75rem]">
     {items.map(item => {
-      return <li className="text-base"><Link href={item.link}>{item.title}</Link></li>
+      return <li key={item.link} className="text-base">
+        <Link href={item.link}>
+          <div className="bg-card min-h-[100px] shadow-md px-[1rem] py-[0.5rem]">
+            {item.title}
+          </div>
+        </Link>
+      </li>
     })}
   </ul>
 }
